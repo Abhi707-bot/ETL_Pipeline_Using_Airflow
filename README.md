@@ -44,6 +44,7 @@ If you want to manage your PostgreSQL database with a graphical interface, you c
 
 To set up PGAdmin via Docker, add the following configuration to your `docker-compose.yml` file:
 
+'''yaml
 services:
   postgres:
     image: postgres:13
@@ -71,6 +72,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "5050:80"
+'''yaml
 
 ## Workflow Overview
 
