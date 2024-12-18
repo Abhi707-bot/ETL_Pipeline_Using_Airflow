@@ -44,38 +44,33 @@ If you want to manage your PostgreSQL database with a graphical interface, you c
 
 To set up PGAdmin via Docker, add the following configuration to your `docker-compose.yml` file:
 
-```yaml
-version: '3'
 services:
   postgres:
     image: postgres:13
-    container_name: postgres-container
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: amazon_books
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    restart: always
     ports:
       - "5432:5432"
-    networks:
-      - airflow_network
 
   pgadmin:
+    container_name: pgadmin4_container2
     image: dpage/pgadmin4
-    container_name: pgadmin-container
+    restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_DEFAULT_PASSWORD: root
     ports:
-      - "80:80"
-    networks:
-      - airflow_network
-    depends_on:
-      - postgres
-
-networks:
-  airflow_network:
-    driver: bridge
-
+      - "5050:80"
 
 ## Workflow Overview
 
