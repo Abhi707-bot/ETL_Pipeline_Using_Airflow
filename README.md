@@ -26,54 +26,6 @@ This pipeline is orchestrated using **Apache Airflow**, which automates and moni
 - **PostgreSQL** - Running locally on `localhost`.
 - **Python 3.x** - Required for transformation logic.
 
-## **Installation Guide**
-
-### 1. **Install Apache Airflow using Docker Compose**
-
-To get started with **Apache Airflow**, follow the installation steps in the official documentation to set up Airflow with **Docker Compose**:
-
-- [Airflow Installation via Docker Compose](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
-
-These steps will help you set up Airflow's environment, including the web server and scheduler, using a Docker container.
-
-### 2. **Install PGAdmin for PostgreSQL Management**
-
-If you want to manage your PostgreSQL database with a graphical interface, you can install **PGAdmin**. Follow these steps to get PGAdmin up and running:
-
-#### 2.1 **Docker Compose Configuration for PGAdmin**
-
-To set up PGAdmin via Docker, add the following configuration to your `docker-compose.yml` file:
-
-'''yaml
-services:
-  postgres:
-    image: postgres:13
-    environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow
-    volumes:
-      - postgres-db-volume:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD", "pg_isready", "-U", "airflow"]
-      interval: 10s
-      retries: 5
-      start_period: 5s
-    restart: always
-    ports:
-      - "5432:5432"
-
-  pgadmin:
-    container_name: pgadmin4_container2
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
-    ports:
-      - "5050:80"
-'''yaml
-
 ## Workflow Overview
 
 ### 1. **Extract Data (Scrape Amazon)**
@@ -107,6 +59,56 @@ services:
 ![image2](https://github.com/user-attachments/assets/9bff3749-39f7-43e1-9a72-63af68c9ad12)
 
 ![image5](https://github.com/user-attachments/assets/d221008f-aa31-4270-b6e8-350a755f79cd)
+
+
+## **Installation Guide**
+
+### 1. **Install Apache Airflow using Docker Compose**
+
+To get started with **Apache Airflow**, follow the installation steps in the official documentation to set up Airflow with **Docker Compose**:
+
+- [Airflow Installation via Docker Compose](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
+
+These steps will help you set up Airflow's environment, including the web server and scheduler, using a Docker container.
+
+### 2. **Install PGAdmin for PostgreSQL Management**
+
+If you want to manage your PostgreSQL database with a graphical interface, you can install **PGAdmin**. Follow these steps to get PGAdmin up and running:
+
+#### 2.1 **Docker Compose Configuration for PGAdmin**
+
+To set up PGAdmin via Docker, add the following configuration to your `docker-compose.yml` file:
+
+```yaml
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    restart: always
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    container_name: pgadmin4_container2
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+
+
 
 
 
