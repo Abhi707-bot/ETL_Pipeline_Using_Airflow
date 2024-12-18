@@ -1,4 +1,4 @@
-# ETL_Pipeline_Using_Airflow
+# ETL Data Pipeline Using Airflow
 
 # Amazon Book ETL Pipeline with Apache Airflow, Docker, and PostgreSQL
 
@@ -29,8 +29,6 @@ This pipeline is orchestrated using **Apache Airflow**, which automates and moni
 
 ### 2. **Transform Data (Process with Python)**
    - **Data Processing:** The extracted data is cleaned using Python. This includes tasks such as:
-     - Removing currency symbols and commas from price fields.
-     - Handling missing or null values.
    - **Output:** Transformed data is saved in a new CSV file.
 
 ### 3. **Load Data into PostgreSQL**
