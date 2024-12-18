@@ -26,6 +26,56 @@ This pipeline is orchestrated using **Apache Airflow**, which automates and moni
 - **PostgreSQL** - Running locally on `localhost`.
 - **Python 3.x** - Required for transformation logic.
 
+## **Installation Guide**
+
+### 1. **Install Apache Airflow using Docker Compose**
+
+To get started with **Apache Airflow**, follow the installation steps in the official documentation to set up Airflow with **Docker Compose**:
+
+- [Airflow Installation via Docker Compose](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
+
+These steps will help you set up Airflow's environment, including the web server and scheduler, using a Docker container.
+
+### 2. **Install PGAdmin for PostgreSQL Management**
+
+If you want to manage your PostgreSQL database with a graphical interface, you can install **PGAdmin**. Follow these steps to get PGAdmin up and running:
+
+#### 2.1 **Docker Compose Configuration for PGAdmin**
+
+To set up PGAdmin via Docker, add the following configuration to your `docker-compose.yml` file:
+
+```yaml
+version: '3'
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres-container
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: amazon_books
+    ports:
+      - "5432:5432"
+    networks:
+      - airflow_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin-container
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "80:80"
+    networks:
+      - airflow_network
+    depends_on:
+      - postgres
+
+networks:
+  airflow_network:
+    driver: bridge
+
 
 ## Workflow Overview
 
