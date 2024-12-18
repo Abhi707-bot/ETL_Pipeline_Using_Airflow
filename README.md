@@ -14,7 +14,8 @@ The ETL pipeline involves the following steps:
 
 This pipeline is orchestrated using **Apache Airflow**, which automates and monitors the entire process.
 
-![Blank diagram (1).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/95e75144-f956-4e60-bea7-299d210aa570/5c60b8e0-b0c6-4c9d-a0ab-e9ed13e8b18e/Blank_diagram_(1).png)
+![Blank diagram (1)](https://github.com/user-attachments/assets/2ab16a5d-0087-4ae0-803e-9afd1d7d12c4)
+
 
 ## Workflow Overview
 
