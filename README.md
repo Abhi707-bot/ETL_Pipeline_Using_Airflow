@@ -17,6 +17,16 @@ This pipeline is orchestrated using **Apache Airflow**, which automates and moni
 ![Blank diagram (1)](https://github.com/user-attachments/assets/2ab16a5d-0087-4ae0-803e-9afd1d7d12c4)
 
 
+## Setup Instructions
+
+### Prerequisites
+
+- **Docker** - To run the Python script in a container.
+- **Apache Airflow** - To orchestrate the ETL pipeline.
+- **PostgreSQL** - Running locally on `localhost`.
+- **Python 3.x** - Required for transformation logic.
+
+
 ## Workflow Overview
 
 ### 1. **Extract Data (Scrape Amazon)**
@@ -51,15 +61,6 @@ This pipeline is orchestrated using **Apache Airflow**, which automates and moni
 
 ![image5](https://github.com/user-attachments/assets/d221008f-aa31-4270-b6e8-350a755f79cd)
 
-
-## Setup Instructions
-
-### Prerequisites
-
-- **Docker** - To run the Python script in a container.
-- **Apache Airflow** - To orchestrate the ETL pipeline.
-- **PostgreSQL** - Running locally on `localhost`.
-- **Python 3.x** - Required for transformation logic.
 
 
   
